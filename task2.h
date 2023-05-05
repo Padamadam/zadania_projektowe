@@ -1,4 +1,4 @@
-#include <iostream>
+
 using namespace std;
 
 // --------- TASK2 ---------
@@ -13,6 +13,7 @@ uint32_t GetBitsFromStr(const char* inputValue, uint8_t bitOffset, uint8_t bitLe
 
     // convert to uint32_t
     uint32_t hexValue = strtoul(inputValue, NULL, 16);
+
     // shift number
     hexValue >>= bitOffset;
     
