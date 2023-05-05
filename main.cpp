@@ -2,6 +2,7 @@
 #include "task1.h"
 #include "task2.h"
 #include "task3.h"
+#include "task6.h"
 
 using namespace std;
 
@@ -35,6 +36,11 @@ void executeTask3(){
     cout << "}" << endl;
 }
 
+void executeTask6(){
+    vector<char> v = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+    printReverse(v, 0);
+}
+
 int main(){
     executeTask1();
     cout << "Task1 finished" << endl;
@@ -42,6 +48,8 @@ int main(){
     cout << "Task2 finished" << endl;
     executeTask3();
     cout << "Task3 finished" << endl;
+    executeTask6();
+    cout << endl << "Task6 finished" << endl;
 
     return 0;
 }
