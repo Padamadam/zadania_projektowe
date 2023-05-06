@@ -58,22 +58,14 @@ class Tree{
         }
 
         void print(int indent){
-            if(indent == 0) {
-                cout << name << endl;
+            for (int i = 0; i < indent; i++) {
+                cout << "\t";
             }
-            cout << "\t";
-            Tree temp = *branches[indent];
-            cout << temp.name << endl;
-            for(int i=0; i < temp.branches_num; i++){
-                cout << "\t\t";
-                Tree sub_temp = *temp.branches[i];
-                cout << sub_temp.name << endl;
+            cout << name << endl;
+
+            for (Tree* branch : branches) {
+                branch->print(indent + 1);
             }
-
-            if(indent > this->branches_num) return;
-
-            indent++;
-            print(indent);
         }
 };
 
@@ -88,7 +80,6 @@ int main(){
     Tree* galaz2_1_2 = galaz2_1->AddSub("galaz 2.1.2");
 
     root->print(0);
-    cout << "end of print" << endl;
     return 0;
 }
 
