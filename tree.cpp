@@ -35,8 +35,34 @@
 //    delete(root); // deleting root shall remove all children (recursive) and clean memory
 // }
 
+
+// --------- TASK 5 ---------
+// Extension of "print" function which will add automatic numbering
+// execution:
+// root->print(0, true); // deepth= 0, true = print numbers
+
+   // We shall get following result (root has no number)
+   // tree name
+   //    1. galaz 1
+   //       1.1. galaz 1.1
+   //    2. galaz 2
+   //       2.1. galaz 2.1
+   //        2.1.1. galaz 2.1.1
+   //       2.2. galaz 2.2
+   //    3. galaz 3
+ 
+// remove second child:
+// root->Del(1);
+// result:
+// tree name
+//    1. galaz 1
+//       1.1. galaz 1.1
+//    2. galaz 3
+
 #include <iostream>
 #include <vector>
+#include <string>
+
 using namespace std;
 
 class Tree{
@@ -57,15 +83,28 @@ class Tree{
             return branch;
         }
 
-        void print(int indent){
+        void Del(int id){
+            branches.erase(branches.begin() + id);
+        }
+
+        void print(int indent, bool is_indexed){
+            string index = "";
+            if(is_indexed){
+                for(int i = 0; i<indent; i++){
+                    index += to_string(i+1) + ". ";
+                }
+            }
+
             for (int i = 0; i < indent; i++) {
                 cout << "\t";
             }
-            cout << name << endl;
+            cout << index << name << endl;
+
 
             for (Tree* branch : branches) {
-                branch->print(indent + 1);
-            }
+                branch->print(indent + 1, is_indexed);
+                
+                }
         }
 };
 
@@ -79,7 +118,9 @@ int main(){
     Tree* galaz2_2 = galaz2->AddSub("galaz 2.2");
     Tree* galaz2_1_2 = galaz2_1->AddSub("galaz 2.1.2");
 
-    root->print(0);
+    root->print(0, true);
+    root->Del(1);
+    root->print(0, false);
     return 0;
 }
 
